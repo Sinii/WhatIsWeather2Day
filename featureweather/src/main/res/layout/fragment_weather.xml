@@ -53,6 +53,15 @@
                 app:layout_constraintVertical_bias="0.25"
                 tools:text="Weather is baad" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dragHintImgView"
+                android:layout_width="126dp"
+                android:layout_height="126dp"
+                android:src="@drawable/ic_up"
+                app:layout_constraintBottom_toTopOf="@+id/preferencesLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <FrameLayout
                 android:id="@+id/preferencesLayout"
                 android:layout_width="match_parent"
