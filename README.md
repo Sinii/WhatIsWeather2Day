@@ -1,4 +1,6 @@
-# GiphyApp
+# What is weather today - good, bad or ok? 
+
+Tell app your preferences and receive answer
 
 - JetPack architecture(AAC Navigation, LiveData, ...)
 - mvvm presentation layer
