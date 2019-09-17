@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weatherVM"
+            type="com.anton.featureweather.ui.WeatherViewModel" />
+
+        <variable
+            name="preferencesVM"
+            type="com.anton.featureweather.ui.UserPreferencesViewModel" />
+    </data>
+
+
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
+            app:layoutDescription="@xml/preferences_motion_scene">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:visibility="@{weatherVM.loadingVisibility}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/weatherType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center_horizontal"
+                android:text="@{weatherVM.weatherType}"
+                android:textColor="@color/textColor"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/preferencesLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25"
+                tools:text="Weather is baad" />
+
+            <FrameLayout
+                android:id="@+id/preferencesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@color/preferencesView" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_preference" />
+            </FrameLayout>
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="210dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Set location preferences"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preferencesLayout" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/location"
+                style="@style/WeatherEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="@string/type_location"
+                android:inputType="text"
+                android:padding="8dp"
+                android:text="@={preferencesVM.location}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView4"
+                tools:text="Moscow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Temperature min"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView4"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText2"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.temperatureMin}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView3"
+                tools:text="min" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Temperature max"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.temperatureMax}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView5"
+                tools:text="max" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Humidity min"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView5"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText3"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.humidityMin}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView6"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView6"
+                tools:text="min" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Humidity max"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView5"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText4"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.humidityMax}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView7"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView7"
+                tools:text="max" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Wind speed min"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView7" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText5"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.windMin}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView8"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView8"
+                tools:text="min" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/appCompatEditText6"
+                style="@style/WeatherEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:inputType="number"
+                android:text="@={preferencesVM.windMax}"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView2"
+                tools:text="max" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Wind speed min"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</layout>
