@@ -36,6 +36,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="gone" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dragHintImgView"
+                android:layout_width="126dp"
+                android:layout_height="126dp"
+                android:src="@drawable/ic_up"
+                app:layout_constraintBottom_toTopOf="@+id/preferencesLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/weatherType"
                 android:layout_width="match_parent"
@@ -53,14 +62,7 @@
                 app:layout_constraintVertical_bias="0.25"
                 tools:text="Weather is baad" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/dragHintImgView"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:src="@drawable/ic_up"
-                app:layout_constraintBottom_toTopOf="@+id/preferencesLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+
 
             <FrameLayout
                 android:id="@+id/preferencesLayout"
@@ -75,7 +77,7 @@
                     android:layout_height="64dp"
                     android:background="@color/preferencesView" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_horizontal|center_vertical"
@@ -103,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/preferencesLayout" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/location"
+                android:id="@+id/locationEditText"
                 style="@style/WeatherEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -133,12 +135,16 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText2"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:inputType="number"
+                android:layout_marginEnd="150dp"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.temperatureMin}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView3"
                 tools:text="min" />
@@ -157,12 +163,15 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:inputType="number"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.temperatureMax}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView5"
                 tools:text="max" />
@@ -181,12 +190,15 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText3"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:inputType="number"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.humidityMin}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView6"
                 tools:text="min" />
@@ -205,13 +217,16 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText4"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginStart="16dp"
-                android:inputType="number"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.humidityMax}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView7"
                 tools:text="max" />
@@ -231,12 +246,15 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText5"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:inputType="number"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.windMin}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView8"
                 tools:text="min" />
@@ -244,12 +262,15 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText6"
                 style="@style/WeatherEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:inputType="number"
+                android:digits="0123456789-."
+                android:padding="8dp"
                 android:text="@={preferencesVM.windMax}"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView2"
                 tools:text="max" />

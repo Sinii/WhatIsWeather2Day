@@ -8,6 +8,7 @@ import com.example.usecase.user.UpdateUserSettingsUseCase
 import com.example.user.UserPreferences
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import java.text.NumberFormat
 import javax.inject.Inject
 
 class UserPreferencesViewModel
@@ -58,7 +59,7 @@ class UserPreferencesViewModel
                 }
                 userPreferences.addSource(result) {
                     location.postValue(it.location)
-                    temperatureMin.postValue(it.temperatureMin.toString())
+                    temperatureMin.postValue(NumberFormat.getInstance().format(it.temperatureMin))
                     temperatureMax.postValue(it.temperatureMax.toString())
                     humidityMin.postValue(it.humidityMin.toString())
                     humidityMax.postValue(it.humidityMax.toString())
