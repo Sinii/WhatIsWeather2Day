@@ -18,8 +18,11 @@ class ConvertToWeatherParamsUseCaseTest {
             val result = convertToWeatherParamsUseCase
                 .doWork(ConvertToWeatherParamsUseCase.Params(weather))
                 .weatherParams
-            Assert.assertTrue(
-                result == "\n\n Temperature = ${weather.main.temp} \n Humidity = ${weather.main.humidity} \n Wind speed = ${weather.wind.speed}"
+            Assert.assertTrue( " result = $result",
+                result == "\n\n" +
+                        " Temperature = 0 \n" +
+                        " Humidity = 2 \n" +
+                        " Wind speed = 3"
             )
         }
     }
