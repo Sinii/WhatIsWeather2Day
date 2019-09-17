@@ -59,12 +59,13 @@ class UserPreferencesViewModel
                 }
                 userPreferences.addSource(result) {
                     location.postValue(it.location)
-                    temperatureMin.postValue(NumberFormat.getInstance().format(it.temperatureMin))
-                    temperatureMax.postValue(it.temperatureMax.toString())
-                    humidityMin.postValue(it.humidityMin.toString())
-                    humidityMax.postValue(it.humidityMax.toString())
-                    windMin.postValue(it.windSpeedMin.toString())
-                    windMax.postValue(it.windSpeedMax.toString())
+                    val numberFormatInst = NumberFormat.getInstance()
+                    temperatureMin.postValue(numberFormatInst.format(it.temperatureMin))
+                    temperatureMax.postValue(numberFormatInst.format(it.temperatureMax))
+                    humidityMin.postValue(numberFormatInst.format(it.humidityMin))
+                    humidityMax.postValue(numberFormatInst.format(it.humidityMax))
+                    windMin.postValue(numberFormatInst.format(it.windSpeedMin))
+                    windMax.postValue(numberFormatInst.format(it.windSpeedMax))
                     userPreferences.postValue(it)
                 }
             }
