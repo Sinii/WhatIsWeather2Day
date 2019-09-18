@@ -3,9 +3,14 @@
     <color name="colorPrimary">#EFFFFF</color>
     <color name="colorPrimaryDark">#E6E6E6E6</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="backgroundColor">#4d4c59</color>
-    <color name="textColor">#f7f6f0</color>
-    <color name="hintTextColor">#71777d</color>
-    <color name="preferencesView">#a7cbd5</color>
+    <color name="backgroundColor">@color/colorSchemeNight</color>
+    <color name="textColor">@color/colorSchemeSky</color>
+    <color name="hintTextColor">@color/colorSchemeShadow</color>
+    <color name="preferencesView">@color/colorSchemeLagoon</color>
 
+    <color name="colorSchemeLagoon">#a7cbd5</color>
+    <color name="colorSchemeSky">#f7f6f0</color>
+    <color name="colorSchemeNight">#4d4c59</color>
+    <color name="colorSchemeNightmare">#362c36</color>
+    <color name="colorSchemeShadow">#71777d</color>
 </resources>

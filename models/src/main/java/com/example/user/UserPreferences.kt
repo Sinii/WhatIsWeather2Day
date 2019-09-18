@@ -17,5 +17,9 @@ data class UserPreferences(
         const val WIND_MIN_DEFAULT = 0f
         const val WIND_MAX_DEFAULT = 2f
         const val LOCATION_DEFAULT = "Amsterdam"
+
+        val TEMPERATURE_RANGE_DEFAULT = -60f to 60f
+        val HUMIDITY_RANGE_DEFAULT = 10f to 100f
+        val WIND_RANGE_DEFAULT = 0f to 10f
     }
 }

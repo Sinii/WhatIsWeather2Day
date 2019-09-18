@@ -31,7 +31,6 @@ class UserPreferencesRepository
             FloatPreferencesLiveData(sp, TEMPERATURE_MIN_PREF, TEMPERATURE_MIN_DEFAULT)
         ) { temperatureMin ->
             mediatorLiveData.transformAndUpdatePreference { this.temperatureMin = temperatureMin }
-
         }
         mediatorLiveData.addSource(
             FloatPreferencesLiveData(sp, TEMPERATURE_MAX_PREF, TEMPERATURE_MAX_DEFAULT)

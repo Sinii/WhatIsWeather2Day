@@ -62,8 +62,6 @@
                 app:layout_constraintVertical_bias="0.25"
                 tools:text="Weather is baad" />
 
-
-
             <FrameLayout
                 android:id="@+id/preferencesLayout"
                 android:layout_width="match_parent"
@@ -124,7 +122,7 @@
                 android:id="@+id/appCompatTextView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Temperature min"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
@@ -132,16 +130,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
 
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText2"
-                style="@style/WeatherEditText"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatText2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginEnd="150dp"
-                android:digits="0123456789-."
                 android:padding="8dp"
-                android:text="@={preferencesVM.temperatureMin}"
+                android:text="@{preferencesVM.temperatureMin}"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -149,26 +147,38 @@
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView3"
                 tools:text="min" />
 
+            <SeekBar
+                android:id="@+id/tempMinSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.temperatureMinProgress}"
+                app:addSeekListener="@{preferencesVM.temperatureMinChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Temperature max"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView3"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+                app:layout_constraintTop_toBottomOf="@+id/tempMinSeekBar" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText"
-                style="@style/WeatherEditText"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/temperatureMaxTextView"
+                android:text="@{preferencesVM.temperatureMax}"
+                android:textColor="@color/textColor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:digits="0123456789-."
                 android:padding="8dp"
-                android:text="@={preferencesVM.temperatureMax}"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -176,26 +186,39 @@
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView5"
                 tools:text="max" />
 
+            <SeekBar
+                android:id="@+id/tempMaxSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.temperatureMaxProgress}"
+                app:addSeekListener="@{preferencesVM.temperatureMaxChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/temperatureMaxTextView" />
+
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Humidity min"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView5"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+                app:layout_constraintTop_toBottomOf="@+id/tempMaxSeekBar" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText3"
-                style="@style/WeatherEditText"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatText3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:digits="0123456789-."
                 android:padding="8dp"
-                android:text="@={preferencesVM.humidityMin}"
+                android:text="@{preferencesVM.humidityMin}"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -203,33 +226,59 @@
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView6"
                 tools:text="min" />
 
+
+            <SeekBar
+                android:id="@+id/humidityMinSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.humidityMinProgress}"
+                app:addSeekListener="@{preferencesVM.humidityMinChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatText3" />
+
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="Humidity max"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView5"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />
+                app:layout_constraintTop_toBottomOf="@+id/humidityMinSeekBar" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText4"
-                style="@style/WeatherEditText"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatText4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginStart="16dp"
-                android:digits="0123456789-."
                 android:padding="8dp"
-                android:text="@={preferencesVM.humidityMax}"
+                android:text="@{preferencesVM.humidityMax}"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView7"
                 tools:text="max" />
+
+            <SeekBar
+                android:id="@+id/humidityMaxSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.humidityMaxProgress}"
+                app:addSeekListener="@{preferencesVM.humidityMaxChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatText4" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView8"
@@ -241,17 +290,17 @@
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView7" />
+                app:layout_constraintTop_toBottomOf="@+id/humidityMaxSeekBar" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText5"
-                style="@style/WeatherEditText"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatText5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:digits="0123456789-."
+                android:text="@{preferencesVM.windMin}"
+                android:textColor="@color/textColor"
                 android:padding="8dp"
-                android:text="@={preferencesVM.windMin}"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -259,15 +308,27 @@
                 app:layout_constraintTop_toTopOf="@+id/appCompatTextView8"
                 tools:text="min" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/appCompatEditText6"
-                style="@style/WeatherEditText"
+            <SeekBar
+                android:id="@+id/windMinSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.windMinProgress}"
+                app:addSeekListener="@{preferencesVM.windMinChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatText5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatText6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:digits="0123456789-."
                 android:padding="8dp"
-                android:text="@={preferencesVM.windMax}"
+                android:text="@{preferencesVM.windMax}"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -280,12 +341,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="Wind speed min"
+                android:layout_marginTop="16dp"
+                android:text="Wind speed max"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8" />
+                app:layout_constraintTop_toBottomOf="@+id/windMinSeekBar" />
+
+            <SeekBar
+                android:id="@+id/windMaxSeekBar"
+                style="@style/WeatherPreferencesSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:progress="@{preferencesVM.windMaxProgress}"
+                app:addSeekListener="@{preferencesVM.windMaxChangeListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatText6" />
+
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>

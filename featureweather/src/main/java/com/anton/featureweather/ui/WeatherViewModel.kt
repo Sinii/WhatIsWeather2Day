@@ -10,7 +10,6 @@ import com.example.usecase.user.GetUserSettingsUseCase
 import com.example.usecase.weather.GetCurrentWeatherUseCase
 import com.example.usecase.weather.GetWeatherTypeUseCase
 import com.example.user.UserPreferences
-import com.example.utils.dLog
 import com.example.weather.Weather
 import kotlinx.coroutines.Job
 import javax.inject.Inject
@@ -24,6 +23,8 @@ class WeatherViewModel
     val loadingVisibility = MutableLiveData(GONE)
     val weatherType = MutableLiveData("")
     var userPreferences = MediatorLiveData<UserPreferences>()
+
+
     private lateinit var userPreferencesSource: LiveData<UserPreferences>
 
     private var currentWeather: Weather? = null
@@ -39,7 +40,6 @@ class WeatherViewModel
             doWorkInMainThread {
                 userPreferencesSource = result.userPreference
                 userPreferences.addSource(userPreferencesSource) {
-                    "preferences changed = ${userPreferencesSource.value}".dLog()
                     userPreferences.value = userPreferencesSource.value
                     firePreferencesChanged()
                 }
