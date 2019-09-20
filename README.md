@@ -8,5 +8,6 @@ Tell app your preferences and receive answer
 - coroutines +  Retrofit networking
 - one activity app
 - base classes to make things and architecture more easier
+- motion scene
 - view  models tests
 - usecase tests
