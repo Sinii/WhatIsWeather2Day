@@ -22,7 +22,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding, ViewModelFactory>()
                     is WeatherViewModel -> {
                         binding.weatherVM = viewModel
                         viewModel.userPreferences.observe(this, Observer {
-                            //todo think about other solutions
+
                         })
                     }
                     is UserPreferencesViewModel -> {
